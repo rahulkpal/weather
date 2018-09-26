@@ -2,19 +2,30 @@
 <html>
 	<head>
 		<meta charset="utf-8">
+                <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+                <link href="https://fonts.googleapis.com/css?family=Questrial" rel="stylesheet">
 		<title>Weather</title>
 	</head>
 	<body>
-	<h1>Weather Info:</h1>
-        <p>Location Detected: {{areaCaptured}}</p>
-        <p>Current Temperature: {{temperature}}</p>
-        <p>Feels like: {{apparentTemperature}}</p>
-        <p>Weather Outside: {{summary}}</p>
-        <p>Humidity Level: {{humidity}}</p>
-        <p>Forecast: {{forecast}}</p>
-        <p>Wind Speed: {{windSpeed}}</p>
-        <br>
-        <p><a href="/">Back to Search</a></p>
-        <p>Designed by: Rahul Kumar Pal</p>
+            <div class="container-fluid">
+                <div class="row">
+                   <div class="col-sm-1 col-md-2"></div>
+                   <div class="col-xs-12 col-sm-10 col-md-8" style="text-align: center;">
+                        <h1 style="font-family: 'Questrial', sans-serif;">Weather Info:</h1>
+                        <p>Location Detected: {{areaCaptured}}</p>
+                        <p>Current Temperature: {{temperature}}</p>
+                        <p>Feels like: {{apparentTemperature}}</p>
+                        <p>Weather Outside: {{summary}}</p>
+                        <p>Humidity Level: {{humidity}}</p>
+                        <p>Forecast: {{forecast}}</p>
+                        <p>Wind Speed: {{windSpeed}}</p>
+                        <br>
+                        <p><a href="/" class="btn btn-outline-primary">Back to Search</a></p>
+                        <p style="font-family: 'Inconsolata', monospace;">Designed by: Rahul Kumar Pal</p>
+                   </div>
+                   <div class="col-sm-1 col-md-2"></div>
+                </div>
+            </div>
+	
 	</body>
 </html>

@@ -46,7 +46,7 @@ app.get('/weather', (req, res) => {
                 temperature: Math.round((body.currently.temperature - 32) * (5/9)) + ' °C',
                 apparentTemperature: Math.round((body.currently.apparentTemperature - 32) * (5/9)) + ' °C',
                 summary: body.currently.summary,
-                humidity: ((body.currently.humidity*100) + '%'),
+                humidity: (Math.round(body.currently.humidity*100) + '%'),
                 forecast: body.hourly.summary,
                 windSpeed: (Math.round((body.currently.windSpeed * 1.7)) + ' KPh'),
             });
