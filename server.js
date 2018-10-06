@@ -22,7 +22,7 @@ app.get('/weather', (req, res) => {
     
     let location = req.query.address;
     location = encodeURIComponent(location);
-    console.log(location);
+    // console.log(location);
     
     request({
         url: `https://us1.locationiq.com/v1/search.php?key=0c49d4b22f610c&q=${location}&format=json`,
