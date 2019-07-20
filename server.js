@@ -37,7 +37,7 @@ app.get('/weather', (req, res) => {
         } else if (body.error === 'Unable to geocode') {
             res.render('ehandler.hbs', {
                 pageTitle: 'Unable to get Geocode!',
-                message: 'Please check the PIN code or the address that you have entered and try again!'
+                message: 'Please check the address that you have entered and try again!'
             });
         } else if (response.statusCode === 200) {
             results = {

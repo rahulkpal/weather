@@ -6,28 +6,74 @@
 
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <link href="https://fonts.googleapis.com/css?family=Questrial" rel="stylesheet">
-        
+        <!-- <link href="https://stackpath.bootstrapcdn.com/font-awesome/5.9.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous"> -->
+        <script src="https://kit.fontawesome.com/060ee128cd.js"></script>
 		<title>Weather</title>
 	</head>
+    <style type="text/css">
+        html,body {
+            height: 100vh;
+            background: rgba(255,255,255,1);
+        }
+        .base {
+            height: 96vh;
+        }
+        .left {
+            background: rgba(255,255,255,1);
+        }
+        .right {
+            background: #2196F3;
+        }
+        @media only screen and (max-width: 767px) {
+          .base {
+            height: 100%;
+          }
+          .extraSpace {
+            padding-top: 3%;
+          }
+        }
+    </style>
 	<body>
-            <div class="container-fluid">
-                <div class="row">
-                   <div class="col-sm-1 col-md-4 col-lg-4"></div>
-                   <div class="col-sm-10 col-md-4 col-lg-4" style="text-align: center; margin-top: 70px;">
-                        <h1 style="font-family: 'Questrial', sans-serif;">Weather Info:</h1>
-                        <p>Location Detected: {{areaCaptured}}</p>
-                        <p>Current Temperature: {{temperature}}</p>
-                        <p>Feels like: {{apparentTemperature}}</p>
-                        <p>Weather Outside: {{summary}}</p>
-                        <p>Humidity Level: {{humidity}}</p>
-                        <p>Forecast: {{forecast}}</p>
-                        <p>Wind Speed: {{windSpeed}}</p>
-                        <br>
-                        <p><a href="/" class="btn btn-outline-primary">Back to Search</a></p>
-                        <p style="font-family: 'Inconsolata', monospace;">Designed by: Rahul Kumar Pal</p>
+        <div class="container-fluid">
+            <div class="row base">
+               <div class="col-sm-12 col-md-7 col-lg-7 left my-auto">
+                    <div class="row">
+                        <div class="col-lg-1 col-md-1 col-sm-0"></div>
+                        <div class="col-lg-10 col-md-10 col-sm-12">
+                            <h1 class="display-4" style="font-family: 'Questrial', sans-serif;">Search result</h1>
+                            <br>
+                            <p><i class="fas fa-map-marker-alt"></i> {{areaCaptured}}</p>
+                            <div class="row">
+                                <div class="col-lg-5 col-md-6 col-sm-12">
+                                    <p><i class="fas fa-thermometer-three-quarters"></i> {{temperature}}</p>
+                                    <p>Feels like: {{apparentTemperature}}</p>
+                                    <p>Wind Speed: {{windSpeed}}</p>
+                                </div>
+                                <div class="col-lg-7 col-md-6 col-sm-12">
+                                    <p>Weather Outside: {{summary}}</p>
+                                    <p>Humidity Level: {{humidity}}</p>
+                                    <p>Forecast: {{forecast}}</p>
+                                </div>
+                            </div>
+                            <br>
+                            <p><a href="/" class="btn btn-outline-primary"><i class="fas fa-arrow-left"></i>&nbsp;Back</a></p>
+                        </div>
+                        <div class="col-lg-1 col-md-1 col-sm-0"></div>
+                    </div>
+               </div>
+               <div class="col-sm-0 col-md-5 col-lg-5 right">
+                   <div class="row base">
+                    <div class="col-sm-12 col-md-12 col-lg-12 my-auto">
+                        <div class="extraSpace">
+                            <p class="text-light text-center" style="font-family: 'Questrial', sans-serif;">Coded with <u><a class="text-light" href="https://darksky.net/dev" target="_blank">Dark Sky</a></u> , <u><a class="text-light" href="https://locationiq.com/" target="_blank">LocationIQ</a></u> API<br>and a sleepless night!</p>
+                        </div>
+                    </div>
                    </div>
-                   <div class="col-sm-1 col-md-4 col-lg-4"></div>
-                </div>
+               </div>
             </div>
+        </div>
+        <footer class="">
+            <p style="font-family: 'Inconsolata', monospace; text-align: center; margin: 0; background: #f1f2f6;"><small>Rahul Kumar Pal | <a href="">Github</a> | <a href="">Twitter</a> | <a href="mailto:rahulpal.dav@gmail.com">Mail</a></small></p>
+        </footer>
 	</body>
 </html>

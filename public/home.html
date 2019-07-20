@@ -8,26 +8,64 @@
 		<link href="https://fonts.googleapis.com/css?family=Questrial" rel="stylesheet">
 		
 		<title>Weather</title>
+		<style type="text/css">
+			html,body {
+				height: 100vh;
+				background: rgba(255,255,255,1);
+			}
+			.base {
+				height: 96vh;
+			}
+			.left {
+				background: rgba(255,255,255,1);
+			}
+			.right {
+				background: #2196F3;
+			}
+			@media only screen and (max-width: 767px) {
+			  .base {
+			 	height: 100%;
+			  }
+			  .extraSpace {
+			  	padding-top: 3%;
+			  }
+			}
+		</style>
 	</head>
 	<body>
 		<div class="container-fluid">
-			<div class="row">
-				<div class="col-sm-1 col-md-4 col-lg-4"></div>
-				<div class="col-sm-10 col-md-4 col-lg-4" style="text-align: center; margin-top: 70px;">
-					<h1 style="font-family: 'Questrial', sans-serif;">Weather Info:</h1>
-					<p class="blockquote p-3 mb-2 bg-danger text-white" style="font-family: 'Questrial', sans-serif;">For accurate results use spaces between words, please avoid using ZIP codes.</p>
-					<br>
-					<form action="/weather" method="get">
-					<input type="text" name="address" placeholder="Enter your current address / location" class="form-control">
-					<br>
-					<input type="submit" value="Check weather" class="btn btn-outline-success">
-					</form>
-					<br>
-					<p style="font-family: 'Inconsolata', monospace;">Designed by: Rahul Kumar Pal</p>
+			<div class="row base">
+				<div class="col-sm-12 col-md-7 col-lg-7 left my-auto">
+					<div class="row">
+						<div class="col-lg-2 col-md-1 col-sm-0"></div>
+						<div class="col-lg-8 col-md-10 col-sm-12">
+							<div class="jumbotron" style="background-color: rgba(255,255,255,1);">
+								<h1 class="display-4" style="font-family: 'Questrial', sans-serif;">Check weather</h1>
+								<form action="/weather" method="get">
+									<div class="form-group">
+										<input type="text" name="address" placeholder="Enter address / location" class="form-control" required>
+										<small id="emailHelp" class="form-text text-muted">For accurate results use spaces between words, <span class="text-danger">please avoid using ZIP codes.</span></small>
+									</div>
+									<input type="submit" value="Check" class="btn btn-outline-success">
+								</form>
+							</div>
+						</div>
+						<div class="col-lg-2 col-md-1 col-sm-12"></div>
+					</div>
 				</div>
-				<div class="col-sm-1 col-md-4 col-lg-4"></div>
+				<div class="col-sm-12 col-md-5 col-lg-5 right">
+					<div class="row base">
+						<div class="col-sm-12 col-md-12 col-lg-12 my-auto">
+							<div class="extraSpace">
+								<p class="text-light text-center" style="font-family: 'Questrial', sans-serif;">Coded with <u><a class="text-light" href="https://darksky.net/dev" target="_blank">Dark Sky</a></u> , <u><a class="text-light" href="https://locationiq.com/" target="_blank">LocationIQ</a></u> API<br>and a sleepless night!</p>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
-		
+		<footer class="">
+			<p style="font-family: 'Inconsolata', monospace; text-align: center; margin: 0; background: #f1f2f6;"><small>Rahul Kumar Pal | <a href="">Github</a> | <a href="">Twitter</a> | <a href="mailto:rahulpal.dav@gmail.com">Mail</a></small></p>
+		</footer>
 	</body>
 </html>
