@@ -6,7 +6,7 @@
 
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 		<link href="https://fonts.googleapis.com/css?family=Questrial" rel="stylesheet">
-		
+		<script defer src="js/all.js"></script>
 		<title>Weather</title>
 		<style type="text/css">
 			html,body {
@@ -42,11 +42,16 @@
 							<div class="jumbotron" style="background-color: rgba(255,255,255,1);">
 								<h1 class="display-4" style="font-family: 'Questrial', sans-serif;">Check weather</h1>
 								<form action="/weather" method="get">
-									<div class="form-group">
+									<div class="input-group">
 										<input type="text" name="address" placeholder="Enter address / location" class="form-control" required>
+										<div class="input-group-append">
+										    <button type="button" class="input-group-text" onmouseover="this.style.cursor='pointer';" onclick="getLocation()"><i class="fas fa-map-marker-alt"></i> &nbsp; Locate me</button>
+										</div>
+										<input type="hidden" name="lat">
+										<input type="hidden" name="lon">
 										<small id="emailHelp" class="form-text text-muted">For accurate results use spaces between words, <span class="text-danger">please avoid using ZIP codes.</span></small>
 									</div>
-									<input type="submit" value="Check" class="btn btn-outline-success">
+									<input id="postBtn" type="submit" value="Check" class="btn btn-outline-success mt-3">
 								</form>
 							</div>
 						</div>
@@ -57,7 +62,7 @@
 					<div class="row base">
 						<div class="col-sm-12 col-md-12 col-lg-12 my-auto">
 							<div class="extraSpace">
-								<p class="text-light text-center" style="font-family: 'Questrial', sans-serif;">Coded with <u><a class="text-light" href="https://darksky.net/dev" target="_blank">Dark Sky</a></u> , <u><a class="text-light" href="https://locationiq.com/" target="_blank">LocationIQ</a></u> API<br>and a sleepless night!</p>
+								<p class="text-light text-center" style="font-family: 'Questrial', sans-serif; font-size: 18px;">Coded with <u><a class="text-light" href="https://darksky.net/dev" target="_blank">Dark Sky</a></u> , <u><a class="text-light" href="https://locationiq.com/" target="_blank">LocationIQ</a></u> API<br>and a sleepless night!</p>
 							</div>
 						</div>
 					</div>
@@ -68,4 +73,38 @@
 			<p style="font-family: 'Inconsolata', monospace; text-align: center; margin: 0; background: #f1f2f6;"><small>Rahul Kumar Pal | <a target="_blank" href="https://github.com/vicky724">Github</a> | <a target="_blank" href="https://twitter.com/rahulpal_UPwale">Twitter</a> | <a href="mailto:rahulpal.dav@gmail.com">Mail</a></small></p>
 		</footer>
 	</body>
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+	
+	<script type="text/javascript">
+		function getLocation() {
+		  $('#postBtn').attr("disabled", true);
+		  $('button').empty();
+		  $('button').html('<i class="fas fa-circle-notch fa-spin"></i> &nbsp; Locate me');
+		  if (navigator.geolocation) {
+		    navigator.geolocation.getCurrentPosition(function (position) {
+		    	$('[name="lat"]').val(position.coords.latitude);
+		    	$('[name="lon"]').val(position.coords.longitude);
+		    	$('[name="address"]').removeAttr('required');
+		    	$('form').submit();
+		    }, function (error) {
+		    	switch(error.code) {
+		    		case error.PERMISSION_DENIED:
+		    		  alert('You must allow to access your location, alternatively you can key in your location to check the weather!')
+		    		  break;
+		    		case error.POSITION_UNAVAILABLE:
+		    		  alert("Location information is unavailable.");
+		    		  break;
+		    		case error.TIMEOUT:
+		    		  alert("The request to get user location timed out. Please try again!");
+		    		  break;
+		    		case error.UNKNOWN_ERROR:
+		    		  alert("An unknown error occurred.");
+		    		  break;
+		    	}
+		    });
+		  } else {
+		  	alert("Geolocation is not supported by this browser.");
+		  }
+		}
+	</script>
 </html>

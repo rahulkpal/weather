@@ -1,9 +1,10 @@
 {
-  "name": "mausam",
+  "name": "weather",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
   "dependencies": {
+    "dotenv": "^8.0.0",
     "express": "^4.16.3",
     "hbs": "^4.0.4",
     "request": "^2.88.0"
