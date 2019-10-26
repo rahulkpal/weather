@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const request = require('request');
 const hbs = require('hbs');
+const fs = require('fs');
 require('dotenv').config();
 
 const port = process.env.PORT || 3010;
@@ -15,14 +16,48 @@ app.set('view engine', 'hbs');
 
 app.use(express.static(__dirname + '/public'));
 
+// Parse URL-encoded bodies (as sent by HTML forms)
+app.use(express.urlencoded({extended: true}));
+
+// Parse JSON bodies (as sent by API clients)
+// app.use(express.json());
+
 app.get('/', (req, res) => {
+    let d = new Date;
+    let logObj = {
+        userAgent: req.headers['user-agent'],
+        userIp: req.ip,
+        hostName: req.hostname,
+        protocol: req.protocol,
+        path: req.path,
+        dateTimeUTC: d.toUTCString(),
+        dateTimeLocal: d.toString()
+    }
+    fs.appendFile('logs.txt', JSON.stringify(logObj) + ',', (err) => {
+        if (err) throw err;
+        console.log('The log was appended to file!');
+    });
     res.sendFile(path.join(__dirname + '/public/home.html'));
 });
 
-app.get('/weather', (req, res) => {    
-    let location = req.query.address;
-    let lat = req.query.lat;
-    let lon = req.query.lon;
+app.post('/weather', (req, res) => {
+    let d = new Date;
+    let logObj = {
+        userAgent: req.headers['user-agent'],
+        userIp: req.ip,
+        hostName: req.hostname,
+        protocol: req.protocol,
+        path: req.path,
+        dateTimeUTC: d.toUTCString(),
+        dateTimeLocal: d.toString()
+    }
+    fs.appendFile('logs.txt', JSON.stringify(logObj) + ',', (err) => {
+        if (err) throw err;
+        console.log('The log was appended to file!');
+    });
+    let location = req.body.address;
+    let lat = req.body.lat;
+    let lon = req.body.lon;
     if (location === '') {
         request({
         url: `https://api.darksky.net/forecast/${process.env.DARKSKY}/${lat},${lon}`,
@@ -91,4 +126,3 @@ app.get('/weather', (req, res) => {
 app.listen(port, () => {
 	console.log(`Server running in port ${port}`);
 });
-

@@ -41,7 +41,7 @@
 						<div class="col-lg-8 col-md-10 col-sm-12">
 							<div class="jumbotron" style="background-color: rgba(255,255,255,1);">
 								<h1 class="display-4" style="font-family: 'Questrial', sans-serif;">Check weather</h1>
-								<form action="/weather" method="get">
+								<form action="/weather" method="post">
 									<div class="input-group">
 										<input type="text" name="address" placeholder="Enter address / location" class="form-control" required>
 										<div class="input-group-append">
@@ -49,8 +49,8 @@
 										</div>
 										<input type="hidden" name="lat">
 										<input type="hidden" name="lon">
-										<small id="emailHelp" class="form-text text-muted">For accurate results use spaces between words, <span class="text-danger">please avoid using ZIP codes.</span></small>
 									</div>
+									<small id="emailHelp" class="form-text text-muted">For accurate results use spaces between words, <span class="text-danger">please avoid using ZIP codes.</span></small>
 									<input id="postBtn" type="submit" value="Check" class="btn btn-outline-success mt-3">
 								</form>
 							</div>
@@ -69,7 +69,7 @@
 				</div>
 			</div>
 		</div>
-		<footer class="">
+		<footer>
 			<p style="font-family: 'Inconsolata', monospace; text-align: center; margin: 0; background: #f1f2f6;"><small>Rahul Kumar Pal | <a target="_blank" href="https://github.com/vicky724">Github</a> | <a target="_blank" href="https://twitter.com/rahulpal_UPwale">Twitter</a> | <a href="mailto:rahulpal.dav@gmail.com">Mail</a></small></p>
 		</footer>
 	</body>
