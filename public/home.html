@@ -84,7 +84,7 @@
 		    navigator.geolocation.getCurrentPosition(function (position) {
 		    	$('[name="lat"]').val(position.coords.latitude);
 		    	$('[name="lon"]').val(position.coords.longitude);
-		    	$('[name="address"]').removeAttr('required');
+		    	$('[name="address"]').val('').removeAttr('required');
 		    	$('form').submit();
 		    }, function (error) {
 		    	switch(error.code) {
